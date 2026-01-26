@@ -11,6 +11,8 @@
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -18,213 +20,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
-    <style>
-      /* Navbar putih */
-#navbar .navbar {
-  background-color: #ffffff; /* putih polos */
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #e0e0e0; /* garis tipis bawah biar rapi */
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Link Navbar dengan animasi underline */
-#navbar .nav-link {
-  position: relative;
-  color: #333333 !important; /* teks gelap agar kontras di putih */
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s, transform 0.3s;
-}
-
-#navbar .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #007bff; /* garis biru untuk animasi */
-  transition: width 0.3s ease;
-}
-
-#navbar .nav-link:hover::after {
-  width: 100%; /* garis muncul penuh */
-}
-
-#navbar .nav-link:hover {
-  color: #007bff !important; /* teks ikut berubah warna */
-  transform: translateY(-2px); /* efek sedikit naik */
-}
-
-/* Link aktif */
-#navbar .nav-link.active::after {
-  width: 100%;
-  background-color: #0056b3; /* garis berbeda untuk aktif */
-}
-
-        /* ===== Jumbotron ===== */
-     
-      #jumbotron h1 {
-        color: aliceblue;
-      }
-      #jumbotron p {
-        color: #fff;
-      }
-      .background-jumbotron {
-        background-image: url("assets/img/jumbotron.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        min-height: 80vh;
-        position: relative;
-        align-items: center;
-        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
-      }
-      .btn-info {
-        background-color: #1e5fa8;
-        color: #fff;
-      }
-      .bg-blue {
-        color: #1e5fa8;
-      }
-      /* ===== Keunggulan ===== */
-      .section-title {
-        font-size: 38px;
-        font-weight: 500;
-        color: #000;
-        letter-spacing: 0.5px;
-      }
-      .keunggulan-card {
-        background: #ffffff;
-        padding: 32px 24px;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-        transition: all 0.3s ease;
-        height: 100%;
-      }
-
-      .keunggulan-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
-      }
-
-      .keunggulan-icon {
-        font-size: 50px;
-        color: #1e5fa8;
-        margin-bottom: 20px;
-      }
-
-      .keunggulan-card h5 {
-        font-size: 24px;
-        font-weight: 500;
-        margin-bottom: 12px;
-        color: #000;
-      }
-
-      .keunggulan-card p {
-        font-size: 14px;
-        color: #6b7280;
-        line-height: 1.6;
-      }
-       /* ===== Layanan ===== */
-      .layanan-card {
-        border: 1px solid #e0e0e0;
-        border-radius: 14px;
-        overflow: hidden;
-        height: 100%;
-      }
-      .layanan-img {
-        height: 260px;
-        object-fit: cover;
-      }
-      .carousel-arrow {
-        filter: invert(1);
-        width: 3rem;
-        height: 3rem;
-      }
-        @media (max-width: 767px) {
-        .layanan-img {
-            height: 220px;
-        }
-      }
-      .carousel-arrow {
-        filter: invert(38%) sepia(82%) saturate(457%) hue-rotate(181deg);
-      }
-      /* ===== Konsultasi ===== */
-      #konsultasi {
-        background-color: #1e5fa8;
-      }
-      h2::before,
-      h2::after{
-        background-color: #1e5fa8;
-        content: '';
-        display: inline-block;
-        height: 1px;
-        position: relative;
-        vertical-align: middle;
-        width: 25%;
-      }
-      h2::before {
-        right: 0.5em;
-        margin-left: -50%;
-      }
-       h2::after {
-        left: 0.5em;
-        margin-right: -50%;
-      }
-      
-      footer a {
-        transition: color 0.3s;
-      }
-      footer a:hover {
-        color: #1e5fa8; 
-      }
-      footer .small {
-        font-size: 0.75rem;
-      }
-      /* ===== Testimoni ===== */
-      .testimoni-section {
-        background: #f8fafc;
-        padding: 70px 20px;
-        text-align: center;
-      }
-      .testimoni-section h2 {
-        font-size: 28px;
-        font-weight: 600;
-        margin-bottom: 40px;
-        color: #111;
-      }
-      .testimoni-slider {
-        max-width: 900px;
-        margin: auto;
-        overflow: hidden;
-      }
-      .testimoni-track {
-        display: flex;
-        gap: 20px;
-        transition: transform 0.6s ease;
-      }
-      .testimoni-card {
-        min-width: 280px;
-        padding: 22px;
-        background: #ffffff;
-        border-radius: 12px;
-        border: 1px solid #e5e7eb;
-        text-align: left;
-      }
-      .testimoni-card p {
-        font-size: 14px;
-        line-height: 1.6;
-        color: #374151;
-        margin-bottom: 12px;
-      }
-      .testimoni-card strong {
-        font-size: 13px;
-        color: #111;
-      }
-    </style>
   </head>
+  
   <body>
     <!-- navbar menu-->
     <section id="navbar" class="fixed-top">
@@ -481,7 +278,15 @@
       <p style="color: white;">
         Punya pertanyaan atau butuh saran? Yuk, ngobrol sama kami! Tim kami siap membantu kamu menemukan solusi terbaik.
       </p>
-      <a href="https://wa.me/6283103992483?text= Saya ingin konsultasi" class="btn btn-light" target="_blank" style="color: #1e5fa8; border: 1px solid white;">Konsultasi</a>
+      <a 
+          href="https://wa.me/6283103992483?text=Saya%20ingin%20konsultasi"
+          class="btn btn-light d-inline-flex align-items-center gap-2"
+          target="_blank"
+          style="color: #1e5fa8; border: 1px solid white;"
+        >
+          <i class="fab fa-whatsapp"></i>
+          Konsultasi via WhatsApp
+        </a>
     </section>
 
 
@@ -495,93 +300,11 @@
       </div>
   </footer>
 
-  
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-
-    <script>
-    const slider = document.getElementById("layananScroll");
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    
-    if (slider) {
-      slider.addEventListener("mousedown", (e) => {
-      isDown = true;
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-
-    slider.addEventListener("mouseleave", () => (isDown = false));
-    slider.addEventListener("mouseup", () => (isDown = false));
-
-    slider.addEventListener("mousemove", (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      slider.scrollLeft = scrollLeft - walk;
-    });
-  }
-</script>
-
-
-<script>
-let index = 0;
-
-fetch("get_testimoni.php")
-  .then(res => res.json())
-  .then(data => {
-    const track = document.getElementById("testimoni-list");
-    track.innerHTML = "";
-
-    data.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "testimoni-card";
-      card.innerHTML = `
-        <p>"${item.komentar}"</p>
-        <strong>- ${item.nama}</strong>
-      `;
-      track.appendChild(card);
-    });
-
-    const cardWidth = document.querySelector(".testimoni-card").offsetWidth + 20;
-
-    setInterval(() => {
-      index++;
-      if (index >= data.length) index = 0;
-      track.style.transform = `translateX(-${index * cardWidth}px)`;
-    }, 3000);
-  });
-</script>
-
-
-<script>
-document.getElementById("formTestimoni").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const formData = new FormData(this);
-
-  fetch("add_testimoni.php", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.text())
-  .then(res => {
-    if(res === "ok"){
-      document.getElementById("status").innerText = "Testimoni terkirim!";
-      this.reset();
-      location.reload();
-    } else {
-      document.getElementById("status").innerText = "Gagal kirim";
-    }
-  });
-});
-</script>
-
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

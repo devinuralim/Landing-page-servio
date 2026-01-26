@@ -1,0 +1,193 @@
+#navbar .navbar {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+#navbar .nav-link {
+  position: relative;
+  color: #333333 !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s, transform 0.3s;
+}
+#navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+#navbar .nav-link:hover::after {
+  width: 100%;
+}
+#navbar .nav-link:hover {
+  color: #007bff !important;
+  transform: translateY(-2px);
+}
+#navbar .nav-link.active::after {
+  width: 100%;
+  background-color: #0056b3;
+}
+
+/*Jumbotron*/
+#jumbotron h1 {
+    color: aliceblue;
+}
+#jumbotron p {
+    color: #fff;
+}
+.background-jumbotron {
+    background-image: url("../img/jumbotron.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 80vh;
+    position: relative;
+    align-items: center;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+}
+.btn-info {
+    background-color: #1e5fa8;
+    color: #fff;
+}
+    bg-blue {
+    color: #1e5fa8;
+}
+
+/* ===== Keunggulan ===== */
+.section-title {
+    font-size: 38px;
+    font-weight: 500;
+    color: #000;
+    letter-spacing: 0.5px;
+}
+.keunggulan-card {
+    background: #ffffff;
+    padding: 32px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+.keunggulan-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+.keunggulan-icon {
+    font-size: 50px;
+    color: #1e5fa8;
+    margin-bottom: 20px;
+}
+.keunggulan-card h5 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #000;
+}
+.keunggulan-card p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* ===== Layanan ===== */
+.layanan-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 14px;
+    overflow: hidden;
+    height: 100%;
+}
+.layanan-img {
+    height: 260px;
+    object-fit: cover;
+}
+.carousel-arrow {
+    filter: invert(1);
+    width: 3rem;
+    height: 3rem;
+}
+@media (max-width: 767px) {
+.layanan-img {
+    height: 220px;
+    }
+}
+.carousel-arrow {
+    filter: invert(38%) sepia(82%) saturate(457%) hue-rotate(181deg);
+}
+
+/* ===== Konsultasi ===== */
+#konsultasi {
+    background-color: #1e5fa8;
+}
+    h2::before,
+    h2::after{
+    background-color: #1e5fa8;
+    content: '';
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 25%;
+}
+    h2::before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+    h2::after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+    footer a {
+    transition: color 0.3s;
+}
+    footer a:hover {
+    color: #1e5fa8; 
+}
+    footer .small {
+    font-size: 0.75rem;
+}
+
+/* ===== Testimoni ===== */
+.testimoni-section {
+    background: #f8fafc;
+    padding: 70px 20px;
+    text-align: center;
+}
+.testimoni-section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #111;
+}
+.testimoni-slider {
+    max-width: 900px;
+    margin: auto;
+        overflow: hidden;
+}
+.testimoni-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.6s ease;
+}
+.testimoni-card {
+    min-width: 280px;
+    padding: 22px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+.testimoni-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 12px;
+}
+.testimoni-card strong {
+    font-size: 13px;
+    color: #111;
+}
