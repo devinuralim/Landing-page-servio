@@ -183,6 +183,46 @@
       footer .small {
         font-size: 0.75rem;
       }
+      /* ===== Testimoni ===== */
+      .testimoni-section {
+        background: #f8fafc;
+        padding: 70px 20px;
+        text-align: center;
+      }
+      .testimoni-section h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        color: #111;
+      }
+      .testimoni-slider {
+        max-width: 900px;
+        margin: auto;
+        overflow: hidden;
+      }
+      .testimoni-track {
+        display: flex;
+        gap: 20px;
+        transition: transform 0.6s ease;
+      }
+      .testimoni-card {
+        min-width: 280px;
+        padding: 22px;
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        text-align: left;
+      }
+      .testimoni-card p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #374151;
+        margin-bottom: 12px;
+      }
+      .testimoni-card strong {
+        font-size: 13px;
+        color: #111;
+      }
     </style>
   </head>
   <body>
@@ -413,13 +453,35 @@
         </div>
     </section>
 
+      <!--bagian testimoni-->
+    <section id="testimoni" class="testimoni-section">
+      <div class="container testimoni-form">
+        <h3 class="text-center mb-4">Tulis Testimoni</h3>
+        <form id="formTestimoni">
+          <div class="mb-3">
+            <input type="text" name="nama" class="form-control" placeholder="Nama kamu" required>
+          </div>
+          <div class="mb-3">
+            <textarea name="komentar" class="form-control" rows="4" placeholder="Tulis pengalaman kamu..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Kirim Testimoni</button>
+        </form>
+        <p id="status" class="mt-3 text-center"></p>
+      </div>
+      <h2 class="mt-5">Apa Kata Mereka?</h2>
+      <div class="testimoni-slider">
+        <div id="testimoni-list" class="testimoni-track"></div>
+      </div>
+    </section>
+
+
     <!--bagian konsultasi-->
     <section id="konsultasi" class="container-fluid text-center p-5 mt-3" style="background-color: #1e5fa8;"> 
-    <h2 class="display" style="color: white;">Konsultasi</h2>
-    <p style="color: white;">
+      <h2 class="display" style="color: white;">Konsultasi</h2>
+      <p style="color: white;">
         Punya pertanyaan atau butuh saran? Yuk, ngobrol sama kami! Tim kami siap membantu kamu menemukan solusi terbaik.
-    </p>
-    <a href="https://wa.me/6283103992483?text= Saya ingin konsultasi" class="btn btn-light" target="_blank" style="color: #1e5fa8; border: 1px solid white;">Konsultasi</a>
+      </p>
+      <a href="https://wa.me/6283103992483?text= Saya ingin konsultasi" class="btn btn-light" target="_blank" style="color: #1e5fa8; border: 1px solid white;">Konsultasi</a>
     </section>
 
 
@@ -431,7 +493,9 @@
         <a href="https://www.instagram.com" class="text-light mr-1" title="Instagram"><i class="fab fa-instagram"></i></a>
         <p class="text-center text-secondary mt-2">Copyright &copy; <i class="text-light">Servio</i> 2025</p>
       </div>
-    </footer>
+  </footer>
+
+  
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -440,27 +504,84 @@
     ></script>
 
     <script>
-      const slider = document.getElementById("layananScroll");
-      let isDown = false;
-      let startX;
-      let scrollLeft;
-
+    const slider = document.getElementById("layananScroll");
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    if (slider) {
       slider.addEventListener("mousedown", (e) => {
-        isDown = true;
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-      });
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
 
-      slider.addEventListener("mouseleave", () => (isDown = false));
-      slider.addEventListener("mouseup", () => (isDown = false));
+    slider.addEventListener("mouseleave", () => (isDown = false));
+    slider.addEventListener("mouseup", () => (isDown = false));
 
-      slider.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        slider.scrollLeft = scrollLeft - walk;
-      });
-    </script>
+    slider.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>
+
+
+<script>
+let index = 0;
+
+fetch("get_testimoni.php")
+  .then(res => res.json())
+  .then(data => {
+    const track = document.getElementById("testimoni-list");
+    track.innerHTML = "";
+
+    data.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "testimoni-card";
+      card.innerHTML = `
+        <p>"${item.komentar}"</p>
+        <strong>- ${item.nama}</strong>
+      `;
+      track.appendChild(card);
+    });
+
+    const cardWidth = document.querySelector(".testimoni-card").offsetWidth + 20;
+
+    setInterval(() => {
+      index++;
+      if (index >= data.length) index = 0;
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+    }, 3000);
+  });
+</script>
+
+
+<script>
+document.getElementById("formTestimoni").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch("add_testimoni.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(res => {
+    if(res === "ok"){
+      document.getElementById("status").innerText = "Testimoni terkirim!";
+      this.reset();
+      location.reload();
+    } else {
+      document.getElementById("status").innerText = "Gagal kirim";
+    }
+  });
+});
+</script>
+
   </body>
 </html>
