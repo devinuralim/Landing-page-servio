@@ -22,7 +22,7 @@
     />
   </head>
   
-  <body>
+  <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100" tabindex="0">
     <!-- navbar menu-->
     <section id="navbar" class="fixed-top">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
