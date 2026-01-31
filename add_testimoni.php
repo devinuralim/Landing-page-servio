@@ -2,29 +2,33 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "landing_page";
+include 'koneksi.php';
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    echo "Koneksi gagal";
-    exit;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Method tidak valid");
 }
 
 $nama = $_POST['nama'] ?? '';
 $komentar = $_POST['komentar'] ?? '';
 
-if ($nama == '' || $komentar == '') {
-    echo "Data tidak lengkap";
-    exit;
+if (empty($nama) || empty($komentar)) {
+    die("Data tidak lengkap");
 }
 
 $sql = "INSERT INTO testimoni (nama, komentar) VALUES (?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $nama, $komentar);
-$stmt->execute();
 
-echo "ok";
+if (!$stmt) {
+    die("Prepare gagal: " . $conn->error);
+}
+
+$stmt->bind_param("ss", $nama, $komentar);
+
+if ($stmt->execute()) {
+    echo "ok";
+} else {
+    echo "Gagal simpan: " . $stmt->error;
+}
+
+$stmt->close();
 $conn->close();

@@ -2,13 +2,14 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+include 'koneksi.php';
 
 header("Content-Type: application/json");
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "landing_page";
+$host = "sql305.infinityfree.com"; 
+    $user = "if0_41023245";            
+    $pass = "Devinuralim19"; 
+    $db   = "if0_41023245_landing_page";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
