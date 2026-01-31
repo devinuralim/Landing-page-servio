@@ -1,3 +1,1 @@
-[﻿# Landing-page-servio
 
-](https://servio.free.nf/?i=2)
